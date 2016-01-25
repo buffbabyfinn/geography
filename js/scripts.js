@@ -1,20 +1,44 @@
 // Business Logic
-// var helloWorld = function(){
-//   return false;
-//
-//   For loops and shit go here
-//   If/else like a madman here
-//
-//  return shit like a mo-fo here
-//
-//   ...whatchyu lookin at bitch? Green those specs and git back to work!
-//  Time fo yo Interface Logic, then suckface when it's all green.
-// };
+
+function Vacay(city, state, country) {
+  this.city = city;
+  this.state = state;
+  this.country = country;
+  this.events = [];
+}
+
+Vacay.prototype.fullVacay = function() {
+  return this.city + ", " + this.state + ", " + this.country;
+}
+
+function Event(thing) {
+  this.thing = thing;
+}
+
+$(document).ready(function() {
+  $("form#new-vacay").submit(function(event) {
+// debugger;
+    var inputtedCity = $("input.new-city").val();
+    var inputtedState = $("input.new-state").val();
+    var inputtedCountry = $("input.new-country").val();
+    var newVacay = new Vacay(inputtedCity, inputtedState, inputtedCountry);
+    var newEvent =  $("input.new-event").val();
+    newVacay.events.push(newEvent);
+
+  $("ul#trips").append("<li><span class='trip'>" + newVacay.fullVacay() + "</span></li>");
 
 
-
-
-
+  $(".trip").last().click(function() {
+      $("#show-trip").show();
+      $("#show-trip h2").text(newVacay.fullVacay());
+      $("ul#events").text("");
+      newVacay.events.forEach(function(event) {
+        $("ul#events").append("<li>" + event + "</li>");
+  });
+  });
+  event.preventDefault();
+  });
+});
 
 
 

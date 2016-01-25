@@ -1,0 +1,16 @@
+#show-trip {
+  display: inline-block;
+  display: none;
+  width: 30%;
+  float: right;
+  background-color: grey;
+  height: 100%;
+
+}
+.trip {
+  cursor: pointer;
+  color: blue;
+}
+.trip :hover {
+  text-decoration: underline;
+}
